@@ -1,0 +1,1605 @@
+{
+  "address": "GZB6nqB9xSC8VKwWajtCu2TotPXz1mZCR5VwMLEKDj81",
+  "metadata": {
+    "name": "roulette_game",
+    "version": "0.1.3",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "claim_winnings",
+      "discriminator": [
+        161,
+        215,
+        24,
+        59,
+        14,
+        236,
+        242,
+        221
+      ],
+      "accounts": [
+        {
+          "name": "game_session",
+          "writable": true
+        },
+        {
+          "name": "player_bets",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114,
+                  95,
+                  98,
+                  101,
+                  116,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "game_session"
+              },
+              {
+                "kind": "account",
+                "path": "player"
+              },
+              {
+                "kind": "account",
+                "path": "player_bets.round",
+                "account": "PlayerBets"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "player_global_winnings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114,
+                  95,
+                  119,
+                  105,
+                  110,
+                  110,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "vault.token_mint",
+                "account": "VaultAccount"
+              },
+              {
+                "kind": "account",
+                "path": "player"
+              }
+            ]
+          }
+        },
+        {
+          "name": "player_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "player",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "close_bets",
+      "discriminator": [
+        82,
+        76,
+        167,
+        51,
+        32,
+        70,
+        9,
+        135
+      ],
+      "accounts": [
+        {
+          "name": "game_session",
+          "writable": true
+        },
+        {
+          "name": "reward_vault",
+          "writable": true
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "closer_token_account",
+          "writable": true
+        },
+        {
+          "name": "reward_vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "closer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "get_random",
+      "discriminator": [
+        96,
+        196,
+        107,
+        79,
+        242,
+        172,
+        139,
+        197
+      ],
+      "accounts": [
+        {
+          "name": "game_session",
+          "writable": true
+        },
+        {
+          "name": "reward_vault",
+          "writable": true
+        },
+        {
+          "name": "initiator_token_account",
+          "writable": true
+        },
+        {
+          "name": "reward_vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "random_initiator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_and_provide_liquidity",
+      "discriminator": [
+        220,
+        185,
+        240,
+        68,
+        206,
+        145,
+        211,
+        105
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_mint"
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "provider_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault_token_account"
+        },
+        {
+          "name": "liquidity_provider",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initialize_game_session",
+      "discriminator": [
+        127,
+        189,
+        104,
+        88,
+        218,
+        56,
+        57,
+        243
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "reward_token_mint"
+        },
+        {
+          "name": "game_session",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101,
+                  95,
+                  115,
+                  101,
+                  115,
+                  115,
+                  105,
+                  111,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_vault",
+      "discriminator": [
+        48,
+        191,
+        163,
+        44,
+        71,
+        129,
+        63,
+        164
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_mint"
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "token_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_token_account"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "place_bets",
+      "discriminator": [
+        49,
+        131,
+        14,
+        212,
+        212,
+        143,
+        224,
+        150
+      ],
+      "accounts": [
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "game_session",
+          "writable": true
+        },
+        {
+          "name": "player_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "player",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "player_bets",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114,
+                  95,
+                  98,
+                  101,
+                  116,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "game_session"
+              },
+              {
+                "kind": "account",
+                "path": "player"
+              },
+              {
+                "kind": "account",
+                "path": "game_session.current_round",
+                "account": "GameSession"
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "bets",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "Bet"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "provide_liquidity",
+      "discriminator": [
+        40,
+        110,
+        107,
+        116,
+        174,
+        127,
+        97,
+        204
+      ],
+      "accounts": [
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "provider_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "liquidity_provider",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "start_new_round",
+      "discriminator": [
+        180,
+        48,
+        50,
+        160,
+        186,
+        163,
+        79,
+        185
+      ],
+      "accounts": [
+        {
+          "name": "game_session",
+          "writable": true
+        },
+        {
+          "name": "reward_vault",
+          "writable": true
+        },
+        {
+          "name": "starter_token_account",
+          "writable": true
+        },
+        {
+          "name": "reward_vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "starter",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "withdraw_all_winnings",
+      "discriminator": [
+        82,
+        86,
+        118,
+        151,
+        47,
+        20,
+        112,
+        228
+      ],
+      "accounts": [
+        {
+          "name": "player_global_winnings",
+          "writable": true
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "player_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "player",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "withdraw_liquidity",
+      "discriminator": [
+        149,
+        158,
+        33,
+        185,
+        47,
+        243,
+        253,
+        31
+      ],
+      "accounts": [
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "provider_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "liquidity_provider",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdraw_owner_revenue",
+      "discriminator": [
+        6,
+        79,
+        251,
+        229,
+        70,
+        122,
+        7,
+        32
+      ],
+      "accounts": [
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "owner_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "withdraw_provider_revenue",
+      "discriminator": [
+        46,
+        47,
+        236,
+        66,
+        138,
+        80,
+        33,
+        95
+      ],
+      "accounts": [
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "provider_token_account",
+          "writable": true
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "liquidity_provider",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "PlayerBets",
+      "discriminator": [
+        244,
+        3,
+        166,
+        99,
+        111,
+        132,
+        107,
+        192
+      ]
+    },
+    {
+      "name": "PlayerGlobalWinnings",
+      "discriminator": [
+        214,
+        252,
+        32,
+        73,
+        113,
+        168,
+        253,
+        243
+      ]
+    },
+    {
+      "name": "VaultAccount",
+      "discriminator": [
+        230,
+        251,
+        241,
+        83,
+        139,
+        202,
+        93,
+        28
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "BetsClosed",
+      "discriminator": [
+        32,
+        95,
+        110,
+        70,
+        247,
+        112,
+        203,
+        79
+      ]
+    },
+    {
+      "name": "BetsPlaced",
+      "discriminator": [
+        33,
+        208,
+        79,
+        174,
+        63,
+        94,
+        22,
+        229
+      ]
+    },
+    {
+      "name": "GameResult",
+      "discriminator": [
+        230,
+        175,
+        125,
+        1,
+        34,
+        250,
+        121,
+        115
+      ]
+    },
+    {
+      "name": "LiquidityProvided",
+      "discriminator": [
+        94,
+        97,
+        39,
+        34,
+        15,
+        96,
+        79,
+        135
+      ]
+    },
+    {
+      "name": "LiquidityWithdrawn",
+      "discriminator": [
+        240,
+        120,
+        73,
+        139,
+        154,
+        31,
+        218,
+        68
+      ]
+    },
+    {
+      "name": "OwnerRevenueWithdrawn",
+      "discriminator": [
+        15,
+        193,
+        135,
+        170,
+        204,
+        242,
+        169,
+        202
+      ]
+    },
+    {
+      "name": "PayoutClaimed",
+      "discriminator": [
+        200,
+        39,
+        105,
+        112,
+        116,
+        63,
+        58,
+        149
+      ]
+    },
+    {
+      "name": "ProviderRevenueWithdrawn",
+      "discriminator": [
+        103,
+        81,
+        191,
+        73,
+        62,
+        73,
+        62,
+        95
+      ]
+    },
+    {
+      "name": "RandomGenerated",
+      "discriminator": [
+        15,
+        22,
+        79,
+        163,
+        86,
+        172,
+        16,
+        176
+      ]
+    },
+    {
+      "name": "RoundCompleted",
+      "discriminator": [
+        65,
+        194,
+        3,
+        183,
+        49,
+        1,
+        215,
+        5
+      ]
+    },
+    {
+      "name": "RoundStarted",
+      "discriminator": [
+        180,
+        209,
+        2,
+        244,
+        238,
+        48,
+        170,
+        120
+      ]
+    },
+    {
+      "name": "TotalWinningsWithdrawn",
+      "discriminator": [
+        87,
+        126,
+        186,
+        121,
+        54,
+        126,
+        53,
+        16
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "ArithmeticOverflow",
+      "msg": "Arithmetic overflow error"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidNumberOfBets",
+      "msg": "Number of bets must be between 1 and 2"
+    },
+    {
+      "code": 6002,
+      "name": "InsufficientFunds",
+      "msg": "Insufficient funds for withdrawal"
+    },
+    {
+      "code": 6003,
+      "name": "InsufficientLiquidity",
+      "msg": "Insufficient liquidity in vault"
+    },
+    {
+      "code": 6004,
+      "name": "Unauthorized",
+      "msg": "Unauthorized access"
+    },
+    {
+      "code": 6005,
+      "name": "NoReward",
+      "msg": "No reward available for withdrawal"
+    },
+    {
+      "code": 6006,
+      "name": "MustWithdrawExactAmount",
+      "msg": "Must withdraw exact amount of liquidity"
+    },
+    {
+      "code": 6007,
+      "name": "InvalidBet",
+      "msg": "Invalid bet"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidTokenAccount",
+      "msg": "Invalid token account"
+    },
+    {
+      "code": 6009,
+      "name": "RoundInProgress",
+      "msg": "Round is already in progress or waiting for random"
+    },
+    {
+      "code": 6010,
+      "name": "BetsNotAccepted",
+      "msg": "Bets are not being accepted at this time"
+    },
+    {
+      "code": 6011,
+      "name": "InvalidRoundStatus",
+      "msg": "Round status does not allow this operation"
+    },
+    {
+      "code": 6012,
+      "name": "TooEarlyToClose",
+      "msg": "Too early to close bets, minimum time not elapsed"
+    },
+    {
+      "code": 6013,
+      "name": "TooEarlyForPayouts",
+      "msg": "Too early for payouts, delay period not elapsed"
+    },
+    {
+      "code": 6014,
+      "name": "NoBetsInRound",
+      "msg": "Player has no bets in this round"
+    },
+    {
+      "code": 6015,
+      "name": "GameSessionNotFound",
+      "msg": "Game session not found"
+    },
+    {
+      "code": 6016,
+      "name": "InvalidRewardToken",
+      "msg": "Invalid reward token"
+    },
+    {
+      "code": 6017,
+      "name": "VaultMismatch",
+      "msg": "Vault mismatch for player bets"
+    },
+    {
+      "code": 6018,
+      "name": "RandomBeforeClosing",
+      "msg": "Cannot generate random number before closing bets"
+    },
+    {
+      "code": 6019,
+      "name": "RandomAlreadyGenerated",
+      "msg": "Random number already generated for this round"
+    },
+    {
+      "code": 6020,
+      "name": "PayoutAlreadyProcessed",
+      "msg": "Payout already processed for this bet"
+    },
+    {
+      "code": 6021,
+      "name": "WinningNumberNotSet",
+      "msg": "Winning number not set for the current round"
+    },
+    {
+      "code": 6022,
+      "name": "InvalidPlayerBetsAccount",
+      "msg": "Invalid player bets account"
+    }
+  ],
+  "types": [
+    {
+      "name": "Bet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "bet_type",
+            "type": "u8"
+          },
+          {
+            "name": "numbers",
+            "type": {
+              "array": [
+                "u8",
+                4
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "BetsClosed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "closer",
+            "type": "pubkey"
+          },
+          {
+            "name": "close_time",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BetsPlaced",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "player",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "bets",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "Bet"
+                }
+              }
+            }
+          },
+          {
+            "name": "total_amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GameResult",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "player",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "payout",
+            "type": "u64"
+          },
+          {
+            "name": "winning_number",
+            "type": "u8"
+          },
+          {
+            "name": "total_bet_amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LiquidityProvided",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "provider",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LiquidityProvision",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "provider",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          },
+          {
+            "name": "withdrawn",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LiquidityWithdrawn",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "provider",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OwnerRevenueWithdrawn",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PayoutClaimed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "player",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PlayerBets",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "player",
+            "type": "pubkey"
+          },
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "bets",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "Bet"
+                }
+              }
+            }
+          },
+          {
+            "name": "processed",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "remaining_payout",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PlayerGlobalWinnings",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "player",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "accumulated_winnings",
+            "type": "u64"
+          },
+          {
+            "name": "last_update",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ProviderRevenueWithdrawn",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "provider",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ProviderReward",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "provider",
+            "type": "pubkey"
+          },
+          {
+            "name": "accumulated_reward",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RandomGenerated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "initiator",
+            "type": "pubkey"
+          },
+          {
+            "name": "winning_number",
+            "type": "u8"
+          },
+          {
+            "name": "generation_time",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoundCompleted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "completer",
+            "type": "pubkey"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoundStarted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "starter",
+            "type": "pubkey"
+          },
+          {
+            "name": "reward_token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "start_time",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TotalWinningsWithdrawn",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "player",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VaultAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "total_liquidity",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "liquidity_pool",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "LiquidityProvision"
+                }
+              }
+            }
+          },
+          {
+            "name": "total_turnover",
+            "type": "u64"
+          },
+          {
+            "name": "provider_rewards",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "ProviderReward"
+                }
+              }
+            }
+          },
+          {
+            "name": "owner_reward",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}
