@@ -1,17 +1,19 @@
-[toolchain]
-
 [features]
 resolution = true
 skip-lint = false
 
+[programs.localnet]
+program_roulette = "39yLJnQTeKW56z8kK64KReuEHVKiHLGGr3ZKTM6dLJrS"
+
+
 [programs.devnet]
-program-roulette = "GZB6nqB9xSC8VKwWajtCu2TotPXz1mZCR5VwMLEKDj81"
+program-roulette = "39yLJnQTeKW56z8kK64KReuEHVKiHLGGr3ZKTM6dLJrS"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "devnet"
+cluster = "localnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
